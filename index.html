@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BFHL Frontend</title>
+</head>
+<body>
+  <h1>BFHL API Test</h1>
+
+  <button onclick="callAPI()">Call API</button>
+
+  <pre id="output"></pre>
+
+  <script>
+    async function callAPI() {
+      const res = await fetch("https://bfhl-api-5p9p.onrender.com/bfhl", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          data: ["A->B", "B->C"]
+        })
+      });
+
+      const data = await res.json();
+      document.getElementById("output").innerText = JSON.stringify(data, null, 2);
+    }
+  </script>
+</body>
+</html>
